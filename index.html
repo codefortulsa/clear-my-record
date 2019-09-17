@@ -34,48 +34,108 @@
                 <div class="card-body">
                     <h2 class="title">Registration Info</h2>
                     <form method="POST">
-                        <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="NAME" name="name">
-                        </div>
-                        <div class="row row-space">
-                            <div class="col-2">
+                        <section class="petitioner-name">
+                                <h3>Name</h3>
+                                <div class="row row-space">
+                                    <div class="col-2">
+                                        <div class="input-group">
+                                            <input id="petitioner-first" class="input--style-1" type="text" placeholder="FIRST" name="firstname">
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="input-group">
+                                            <input id="petitioner-middle" class="input--style-1" type="text" placeholder="MIDDLE" name="middlename">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="input-group">
-                                    <input class="input--style-1 js-datepicker" type="text" placeholder="BIRTHDATE" name="birthday">
-                                    <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                        <input id="petitioner-last" class="input--style-1" type="text" placeholder="LAST" name="lastname">
+                                </div>
+                        </section>
+                        <section class="petitioner-address">
+                            <h3>Address</h3>
+                            <div class="col-1">
+                                <div class="input-group">
+                                    <input id="petitioner-street1" class="input--style-1" type="text" placeholder="ADDRESS LINE 1" name="street1">
                                 </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-1">
+                                <div class="input-group">
+                                    <input id="petitioner-street2" class="input--style-1" type="text" placeholder="ADDRESS LINE 2" name="street2">
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <div class="col-3">
+                                    <div class="input-group">
+                                        <input id="petitioner-city" class="input--style-1" type="text" placeholder="CITY" name="city">
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                        <div class="input-group">
+                                            <div class="rs-select2 js-select-simple select--no-search">
+                                                <select id='petitioner-state' name="state">
+                                                    <option disabled="disabled" selected="selected">STATE</option>
+                                                    <option>AR</option>
+                                                    <option>OK</option>
+                                                    <option>TX</option>
+                                                </select>
+                                                <div class="select-dropdown"></div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="input-group">
+                                        <input id="petitioner-zip" class="input--style-1" type="text" placeholder="ZIPCODE" name="ZIP">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <section class="petitioner-case">
+                                <div class="row row-space">
+                                        <div class="col-2">
+                                            <div class="input-group">
+                                                <input id="petitioner-dateOfArrest" class="input--style-1 js-datepicker" type="text" placeholder="DATE OF ARREST" name="dateOfArrest">
+                                                <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="input-group">
+                                                <div class="rs-select2 js-select-simple select--no-search">
+                                                    <select id='petitioner-county' name="county">
+                                                        <option disabled="disabled" selected="selected">COUNTY</option>
+                                                        <option>Tulsa</option>
+                                                        <option>Rodgers</option>
+                                                        <option>Osage</option>
+                                                    </select>
+                                                    <div class="select-dropdown"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="gender">
-                                            <option disabled="disabled" selected="selected">GENDER</option>
-                                            <option>Male</option>
-                                            <option>Female</option>
-                                            <option>Other</option>
+                                        <select id="petitioner-case-agency" name="class">
+                                            <option disabled="disabled" selected="selected">ARRESTING AGENCY</option>
+                                            <option>Tulsa</option>
+                                            <option>Broken Arrow</option>
+                                            <option>Jenks</option>
                                         </select>
                                         <div class="select-dropdown"></div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="class">
-                                    <option disabled="disabled" selected="selected">CLASS</option>
-                                    <option>Class 1</option>
-                                    <option>Class 2</option>
-                                    <option>Class 3</option>
-                                </select>
-                                <div class="select-dropdown"></div>
-                            </div>
-                        </div>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <input class="input--style-1" type="text" placeholder="REGISTRATION CODE" name="res_code">
+                                <div class="row row-space">
+                                    <div class="col-2">
+                                        <div class="input-group">
+                                            <input id="petitioner-case-id" class="input--style-1" type="text" placeholder="CASE ID" name="caseID">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                                <div class="input-group">
+                                    <input id="petitioner-charges" class="input--style-1" type="textarea" placeholder="CHARGES" name="charges">
+                                </div>
+                        </section>
+                        
                         <div class="p-t-20">
                             <button class="btn btn--radius btn--green download-pdf" type="submit">Submit</button>
                         </div>
@@ -94,6 +154,7 @@
 
     <!-- Main JS-->
     <script src="js/global.js"></script>
+    <script src="js/petitioner.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
