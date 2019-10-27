@@ -10,7 +10,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Au Register Forms by Colorlib</title>
+    <title>Clear My Record Tulsa</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -32,7 +32,7 @@
             <div class="card card-1">
                 <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title">Registration Info</h2>
+                    <h2 class="title">Petitioner Info</h2>
                     <form method="POST">
                         <section class="petitioner-name">
                                 <h3>Name</h3>
@@ -75,9 +75,9 @@
                                             <div class="rs-select2 js-select-simple select--no-search">
                                                 <select id='petitioner-state' name="state">
                                                     <option disabled="disabled" selected="selected">STATE</option>
-                                                    <option>AR</option>
-                                                    <option>OK</option>
-                                                    <option>TX</option>
+                                                    <option value='AR'>AR</option>
+                                                    <option value='OK'>OK</option>
+                                                    <option value='TX'>TX</option>
                                                 </select>
                                                 <div class="select-dropdown"></div>
                                             </div>
@@ -92,6 +92,7 @@
                         </section>
                         
                         <section class="petitioner-case">
+                            <h3>Case Info</h3>
                                 <div class="row row-space">
                                         <div class="col-2">
                                             <div class="input-group">
@@ -104,9 +105,9 @@
                                                 <div class="rs-select2 js-select-simple select--no-search">
                                                     <select id='petitioner-county' name="county">
                                                         <option disabled="disabled" selected="selected">COUNTY</option>
-                                                        <option>Tulsa</option>
-                                                        <option>Rodgers</option>
-                                                        <option>Osage</option>
+                                                        <option value="Tulsa">Tulsa</option>
+                                                        <option value="Rodgers">Rodgers</option>
+                                                        <option value="Osage">Osage</option>
                                                     </select>
                                                     <div class="select-dropdown"></div>
                                                 </div>
@@ -117,9 +118,9 @@
                                     <div class="rs-select2 js-select-simple select--no-search">
                                         <select id="petitioner-case-agency" name="class">
                                             <option disabled="disabled" selected="selected">ARRESTING AGENCY</option>
-                                            <option>Tulsa</option>
-                                            <option>Broken Arrow</option>
-                                            <option>Jenks</option>
+                                            <option value="Tulsa">Tulsa</option>
+                                            <option value="Broken Arrow">Broken Arrow</option>
+                                            <option value="Jenks">Jenks</option>
                                         </select>
                                         <div class="select-dropdown"></div>
                                     </div>
@@ -127,7 +128,7 @@
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group">
-                                            <input id="petitioner-case-id" class="input--style-1" type="text" placeholder="CASE ID" name="caseID">
+                                            <input id="petitioner-case-no" class="input--style-1" type="text" placeholder="CASE Number" name="caseNo">
                                         </div>
                                     </div>
                                 </div>
@@ -154,7 +155,6 @@
 
     <!-- Main JS-->
     <script src="js/global.js"></script>
-    <script src="js/petitioner.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
