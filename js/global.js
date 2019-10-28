@@ -78,7 +78,8 @@ window.onload = (event) => {
         
         var petitioner = getPetitioner()
         var doc = new jsPDF();
-        doc.text(printPetitioner(petitioner), 20, 20);
+        doc.setFontSize(9);
+        doc.text(hbDocPrint(petitioner), 10, 20);
         doc.save(petitioner.firstName +'-Petition.pdf');
         console.log('Success')
     });
@@ -104,18 +105,17 @@ function getPetitioner(){
         city: getValueById('city'),
         state: getValueById('state'),
         zipcode: getValueById('zip'),
-        phone1: getValueById(''),
-        phone2: getValueById('phone1'),
-        county: getValueById('phone2'),
+        phone1: getValueById('phone1'),
+        county: getValueById('county'),
         arrestingAgencyID: getValueById('case-agency'),
         dateOfArrest: getValueById('dateOfArrest'),
-        caseNo: getValueById('case-id'),
+        caseNo: getValueById('case-no'),
         charges: getValueById('charges'),
     }
     return petitioner;
 }
 function printVariable(id,value){
-    return id +": " + value + "\n"
+    return id +"\n " + value + "\n\n"
 }
 
 function printPetitioner(petitioner){
@@ -130,7 +130,6 @@ function printPetitioner(petitioner){
     output +=  printVariable("State", petitioner.state)
     output += printVariable("Zip", petitioner.zipcode)
     output += printVariable("Phone 1", petitioner.phone1)
-    output += printVariable("Phone 2", petitioner.phone2)
     output += "Case Information \n"
     output += printVariable("County", petitioner.county)
     output += printVariable("Agency", petitioner.arrestingAgencyID)
@@ -138,4 +137,92 @@ function printPetitioner(petitioner){
     output += printVariable("Case Number", petitioner.caseNo)
     output += printVariable("Charges", petitioner.charges)
     return output
+}
+
+function hbDocPrintTest(petitioner){
+    var docText =    `IN THE DISTRICT COURT OF ${petitioner.county} COUNTY`;
+    return docText;
+}
+
+function hbDocPrint(petitioner){
+    var docText =
+    ` IN THE DISTRICT COURT OF ${petitioner.county} COUNTY
+STATE OF OKLAHOMA ___________________, ) ) Petitioner, ) ) ) ) vs. ) Case No. __${petitioner.caseNo}_____ ) ___________________ ) ) ) ) 
+THE STATE OF OKLAHOMA, ) ) ) ) Respondent. )
+
+PETITION TO EXPUNGE RECORDS PURSUANT TO TITLE 22 O.S. SECTIONS 18 AND 19
+
+COMES NOW, the Petitioner and respectfully moves this Court to expunge the criminal history records of the Petitioner 
+pursuant to paragraph 15 of subsection A of Section 18 and Section 19 of Title 22 of the Oklahoma Statutes.
+ 
+PETITIONER INFORMATION:
+ 
+${petitioner.lastName}, ${petitioner.firstName} ${petitioner.middleName}
+ (Last name) (First name) (Middle name) 
+
+${petitioner.street1}
+${petitioner.street2}
+${petitioner.city}, ${petitioner.state} ${petitioner.zipcode}
+ (Address)
+
+ ${petitioner.phone1}
+(Phone Number)
+
+ _[Petitioner.DoB]__[Petitioner.SSN]_________ 
+(Date of Birth) (Social Security Number)
+ 
+CRIMINAL CASE INFORMATION:
+ 
+Name and Address of Arresting Agency:  
+_____${petitioner.arrestingAgencyID}______________________________
+_____[Petitioner.ArrestingAgencyID - > Agency.Address]____________________________
+Date of Arrest: __${petitioner.dateOfArrest}__ 
+
+Name and Address of Other Agency:
+
+(List any state or local government agency that has a record of your case.)
+ 
+_[Peititioner.ID -> AsociatedAgency.Order[0] -> Agency.Name] - [Agency.Address]________ ________________ 
+_[Peititioner.ID -> AsociatedAgency.Order[1] -> Agency.Name] - [Agency.Address]________ ________________ 
+_[Peititioner.ID -> AsociatedAgency.Order[2] -> Agency.Name]  - [Agency.Address]________ ________________
+ 
+Case Number to be Expunged: ${petitioner.caseNo}
+ 
+Charge to be Expunged: ${petitioner.charges}
+ 
+* Information on your criminal case may be found at www.oscn.net.
+ 
+I, the above-named Petitioner, hereby petition this Court for an expungement of criminal records pursuant to paragraph 15 
+of subsection A of Section 18 of Title 22 of the Oklahoma Statutes and certify as follows:
+ 
+1. In this court of the county named above, I was charged and convicted of a nonviolent felony offense not listed in 
+Section 571 of Title 57 of the Oklahoma Statutes;
+ 
+2. That the nonviolent felony offense I was charged and convicted of has been reclassified as a misdemeanor offense under 
+Oklahoma law;
+ 
+3. That I am not currently serving a sentence for a crime in this state or another state;
+ 
+4. At least thirty (30) days have passed since either the completion of my sentence or the commutation of my sentence for 
+the crime that was reclassified as a misdemeanor;
+ 
+5. That all restitution (if any) ordered by the court to be paid by me in this case has been satisfied in full;
+ 
+6. That I have successfully completed any and all treatment program(s) ordered by the court, successfully completed an 
+accelerated or revoked sentence or successfully completed a treatment program at a later date; and
+ 
+7. That the harm to the Petitioner’s privacy or danger of unwarranted adverse consequences outweighs the public’s interest 
+in retaining said records.
+ 
+I declare under penalty of perjury that the statements made herein are true and correct to the best of my knowledge, 
+information and belief.
+ 
+
+
+
+________________________________________________ 
+Date Signature of Petitioner Name 
+(Print): ${petitioner.firstName} ${petitioner.middleName} ${petitioner.lastName}
+`;
+return docText;
 }
