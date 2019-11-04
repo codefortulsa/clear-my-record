@@ -25,7 +25,13 @@
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
 </head>
+<script>
+  // register ServiceWorker, remember to use absolute path!
+  if (navigator.serviceWorker) {
+    navigator.serviceWorker.register('/clear-my-record/sw.js', {scope: '/clear-my-record/'})
+  }
 
+</script>
 <body>
     <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
         <div class="wrapper wrapper--w680">
